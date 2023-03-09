@@ -2,91 +2,80 @@
 <html lang="en">
 
 <head>
-    <?php $this->load->view('backend/_partials/header') ?>
+    <?php $this->load->view('backend/__partials/header'); ?>
 </head>
 
 <body>
-    <main class="main">
-        <?php $this->load->view('backend/_partials/sidenav') ?>
 
-        <div class="content">
-            <div class="container my-4 col-6">
-                <div class="container">
-                    <div class="card">
-                        <div class="card-header bg-dark text-white">
-                            <h5>Tambah Data User</h5>
-                        </div>
-                        <div class="card-body">
-                            <form action="" method="POST" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label for="nama"><strong>Nama User</strong></label>
-                                    <input type="text" class="form-control" name="nama" required maxlength="100" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="nip"><strong>NIP</strong></label>
-                                    <input type="text" class="form-control" name="nip" required maxlength="20" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="email"><strong>Email</strong></label>
-                                    <input type="text" class="form-control" name="email" required maxlength="100" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="no_kontak"><strong>No Kontak</strong></label>
-                                    <input type="text" class="form-control" name="no_kontak" required maxlength="50" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="level"><strong>Level</strong></label>
-                                    <select name="level" id="level" class="form-control" required>
+    <div class="main">
+
+        <?php $this->load->view('backend/_partials/sidenav') ?>
+        <!-- Sing up  Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="../../assets/pot/monter.jpeg" alt="sing up image"></figure>
+
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form method="POST" class="register-form" id="login-form">
+                            <div class="form-group">
+                                <label for="nama"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="nama" id="nama" placeholder="Your Name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="nip"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="text" name="nip" id="nip" placeholder="Nip" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Email" />
+                            </div>
+                            <div class="form-group">
+                                <label for="no_kontak"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="text" name="no_kontak" id="no_kontak" placeholder="no_kontak" />
+                            </div>
+                            <div class="form-group">
+                                <label for="level" class="label-agree-term">
+                                    <select name="level" id="level" class="zmdi zmdi-lock">
                                         <option value="Petugas">Petugas</option>
                                         <option value="Admin">Admin</option>
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="username"><strong>Username</strong></label>
-                                    <input type="text" class="form-control" id="username" name="username" required
-                                        maxlength="100">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password"><strong>Password</strong></label>
-                                    <input type="password" class="form-control" id="password" name="password" required
-                                        maxlength="100">
-                                </div>
-                                <div class="float-right">
-                                    <a href="<?= site_url('backend/users'); ?>" class="btn btn-secondary">
-                                        <i href="#" class="fa-solid fa-backward"></i> Kembali
-                                    </a>
-                                    <button type="submit" id="save" value="save" class="btn btn-primary"><i
-                                            class="fa-regular fa-floppy-disk"></i> Simpan</button>
-                                </div>
-                            </form>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="username" placeholder="username" />
+                            </div>
+                            <div class="form-group">
+                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="Password" />
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="sign up" />
+                            </div>
+
+                        </form>
+                        <div class="social-login">
+                            <span class="social-label">Or login with</span>
+                            <ul class="socials">
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <?php $this->load->view('backend/_partials/footer') ?>
-        </div>
-    </main>
-</body>
+        </section>
+
+    </div>
+
+
+    <?php $this->load->view('backend/__partials/footer'); ?>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
-
-<?php if ($this->session->flashdata('message')) : ?>
-<script>
-const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-})
-
-Toast.fire({
-    icon: 'warning',
-    title: '<?= $this->session->flashdata('message') ?>'
-})
-</script>
-<?php endif ?>
